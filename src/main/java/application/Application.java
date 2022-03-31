@@ -19,10 +19,6 @@ public class Application {
     @Bean
     CommandLineRunner init(PersonRepository userRepository) {
         return args -> {
-            Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
-                Person person = new Person(name, name, name.toLowerCase() + "@domain.com");
-                userRepository.save(person);
-            });
             userRepository.findAll().forEach(System.out::println);
         };
     }
