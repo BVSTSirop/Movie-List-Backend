@@ -1,7 +1,6 @@
 package application;
 
 import application.config.ApiConfiguration;
-import application.entity.Person;
 import application.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,8 +20,6 @@ public class Application {
 
     @Bean
     CommandLineRunner init(PersonRepository userRepository) {
-        return args -> {
-            userRepository.findAll().forEach(System.out::println);
-        };
+        return args -> userRepository.findAll().forEach(System.out::println);
     }
 }
