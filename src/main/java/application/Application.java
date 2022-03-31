@@ -1,16 +1,19 @@
 package application;
 
+import application.config.ApiConfiguration;
 import application.entity.Person;
 import application.repository.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.stream.Stream;
-
 @SpringBootApplication
 public class Application {
+
+    @Autowired
+    private ApiConfiguration configuration;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
