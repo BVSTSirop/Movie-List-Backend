@@ -1,11 +1,11 @@
-package spring;
+package application;
 
-import model.User;
+import application.entity.Person;
+import application.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import repository.UserRepository;
 
 import java.util.stream.Stream;
 
@@ -17,11 +17,11 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner init(UserRepository userRepository) {
+    CommandLineRunner init(PersonRepository userRepository) {
         return args -> {
             Stream.of("John", "Julie", "Jennifer", "Helen", "Rachel").forEach(name -> {
-                User user = new User(name, name.toLowerCase() + "@domain.com");
-                userRepository.save(user);
+                Person person = new Person(name, name, name.toLowerCase() + "@domain.com");
+                userRepository.save(person);
             });
             userRepository.findAll().forEach(System.out::println);
         };
