@@ -35,6 +35,8 @@ public class Application {
     CommandLineRunner init(PersonRepository userRepository) throws IOException {
         this.authToken = authenticate();
 
+        System.out.println(authToken);
+
         return args -> userRepository.findAll().forEach(System.out::println);
     }
 
